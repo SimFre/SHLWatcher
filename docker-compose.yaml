@@ -1,0 +1,21 @@
+version: "3.4"
+services:
+  shlwatcher:
+    build:
+      context: "."
+      network: br
+    container_name: shlwatcher
+    domainname: example.tld
+    environment:
+      - CLIENT_ID=abc
+      - CLIENT_SECRET=abc
+    hostname: shlwatcher
+    image: simfre/shlwatcher
+    networks:
+      br:
+        aliases:
+          - shlwatcher
+    restart: unless-stopped
+networks:
+  br:
+    external: true
